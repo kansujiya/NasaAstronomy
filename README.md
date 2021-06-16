@@ -35,5 +35,6 @@ Project is created with:
 * Needs to setup Depndacy Injection
 * Image donwloading caching should be in NetworkService Module
 * For UI needs to create Design Materail module
+* Code refactoring required at some places.
 * Test cases needs more covrage.
 
