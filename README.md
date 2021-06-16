@@ -1,7 +1,7 @@
 # NasaAstronomy iOS Native App
  Moduler | MVVM | Caching | Native iOS NasaAstronomy App 
  
-* ##### Note - Sample API used in app from [Nasa] (https://api.nasa.gov/) portal.
+* ##### Note - Sample API used in app from [Nasa](https://api.nasa.gov/) portal.
 
 ## Table of contents
 * [Technologies](#technologies)
