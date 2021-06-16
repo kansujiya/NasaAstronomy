@@ -7,33 +7,35 @@
 
 import Foundation
 import UIKit
+import NetworkService
+let mime = "image"
 
 extension UIImageView {
-    func downloaded(from url: URL?, _ cacheKey: String?, imageCache: NSCache<AnyObject, AnyObject>, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = url else {return}
+    func downloaded(from url: String?, _ cacheKey: String?, contentMode mode: ContentMode = .scaleAspectFit) {
         contentMode = mode
+        guard let urlValue = url, let url = URL(string: urlValue) else { return }
         
-        if let imageFromCache = imageCache.object(forKey: cacheKey as AnyObject) as? UIImage {
-            self.image = imageFromCache
-            return
-        }
+        let key = (shortStringValueInYYYYMMDDAsDate(Date()) ?? "") + mime
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-            else { return }
-            DispatchQueue.main.async() { [weak self] in
-                imageCache.setObject(image, forKey: cacheKey as AnyObject)
-                self?.image = image
+        if DataCache.instance.hasData(forKey: key) {
+            let cacheImage = DataCache.instance.readImageForKey(key: key)
+            DispatchQueue.main.async {
+                self.image = cacheImage
             }
-        }.resume()
-    }
-    
-    func downloaded(from link: String, _ cacheKey: String?, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, cacheKey, imageCache: NSCache<AnyObject, AnyObject>(), contentMode: mode)
+            
+        } else {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                guard
+                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                    let mimeType = response?.mimeType, mimeType.hasPrefix(mime),
+                    let data = data, error == nil,
+                    let image = UIImage(data: data)
+                else { return }
+                DataCache.instance.write(image: image, forKey: key)
+                DispatchQueue.main.async {
+                    self.image = image
+                }
+            }.resume()
+        }
     }
 }

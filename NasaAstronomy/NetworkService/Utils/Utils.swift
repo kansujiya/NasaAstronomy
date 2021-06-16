@@ -10,14 +10,14 @@ import UIKit
 
 let dateFormat = "ddMMyyyy"
 
-func shortStringValueInYYYYMMDDAsDate(_ date: Date?) -> String? {
+public func shortStringValueInYYYYMMDDAsDate(_ date: Date?) -> String? {
     guard let dateValue = date else { return nil }
     let formatter: DateFormatter = DateFormatter()
     formatter.dateFormat = dateFormat
     return formatter.string(from: dateValue)
 }
 
-func shortStringValueInYYYYMMDDAsDayBeforeDate(_ date: Date?) -> String? {
+public func shortStringValueInYYYYMMDDAsDayBeforeDate(_ date: Date?) -> String? {
     guard let dateValue = date else { return nil }
     let formatter: DateFormatter = DateFormatter()
     formatter.dateFormat = dateFormat

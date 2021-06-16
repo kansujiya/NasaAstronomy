@@ -16,33 +16,29 @@ class PictureOfDayViewController: UIViewController {
     @IBOutlet weak var picOfTheDay: UIImageView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
     
-    private var pictureOfDayViewModel : PictureOfDayViewModel!
+    private var pictureOfDayViewModel =  PictureOfDayViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         callToViewModelForUIUpdate()
     }
     
-    func callToViewModelForUIUpdate(){
-        self.pictureOfDayViewModel =  PictureOfDayViewModel()
-        DispatchQueue.main.async {
-            self.pictureOfDayViewModel.bindResponseViewModelToController = { [weak self] in
-                guard let weakSelf = self else {return}
-                weakSelf.activity.isHidden = true
-                weakSelf.dateLabel.text = weakSelf.pictureOfDayViewModel.pictureOfDayData?.date
-                weakSelf.imageData.text = weakSelf.pictureOfDayViewModel.pictureOfDayData?.explanation
-                weakSelf.imageTitle.text = weakSelf.pictureOfDayViewModel.pictureOfDayData?.title
-                let url = weakSelf.pictureOfDayViewModel.pictureOfDayData?.url
-                weakSelf.picOfTheDay.downloaded(from: url ?? "", weakSelf.pictureOfDayViewModel.pictureOfDayData?.date ?? "")
-            }
+    func callToViewModelForUIUpdate() {
+        self.pictureOfDayViewModel.bindResponseViewModelToController = { [weak self] in
+            guard let weakSelf = self else {return}
+            weakSelf.activity.isHidden = true
+            weakSelf.dateLabel.text = weakSelf.pictureOfDayViewModel.pictureOfDayData?.date
+            weakSelf.imageData.text = weakSelf.pictureOfDayViewModel.pictureOfDayData?.explanation
+            weakSelf.imageTitle.text = weakSelf.pictureOfDayViewModel.pictureOfDayData?.title
+            let url = weakSelf.pictureOfDayViewModel.pictureOfDayData?.url
+            weakSelf.picOfTheDay.downloaded(from: url ?? "", weakSelf.pictureOfDayViewModel.pictureOfDayData?.date ?? "")
         }
         
         self.pictureOfDayViewModel.bindAlertViewModelToController = { [weak self] in
             guard let weakSelf = self else {return}
             let alert = UIAlertController(title: AppConstant.alertTitle, message: AppConstant.alertMessage, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: AppConstant.alertButtonTitle, style: UIAlertAction.Style.default, handler: nil))
-            weakSelf.present(alert, animated: true, completion: nil)
-
+            weakSelf.present(alert, animated: true, completion: nil)            
         }
     }
 }

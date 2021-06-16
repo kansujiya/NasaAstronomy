@@ -10,21 +10,21 @@ import NetworkService
 
 class PictureOfDayViewModel {
     
-    private var useCase : PicureOfTheDayUseCaseProtocol!
+    var useCase : PicureOfTheDayUseCaseProtocol!
     private(set) var pictureOfDayData : PictureOfDayModel? {
         didSet {
-            self.bindResponseViewModelToController()
+            self.bindResponseViewModelToController?()
         }
     }
     
     private(set) var showAlert : Bool? {
         didSet {
-            self.bindAlertViewModelToController()
+            self.bindAlertViewModelToController?()
         }
     }
     
-    var bindResponseViewModelToController : (() -> ()) = {}
-    var bindAlertViewModelToController : (() -> ()) = {}
+    var bindResponseViewModelToController : (() -> ())?
+    var bindAlertViewModelToController : (() -> ())?
     
     init() {
         self.useCase =  PicureOfTheDayUseCase()
@@ -35,9 +35,7 @@ class PictureOfDayViewModel {
         self.useCase.getPictureOfTheDay(from: .getPictureOfDay, completion: {[weak self] result in
             switch result {
             case .success(let picOfDayData):
-                DispatchQueue.main.async {
-                    self?.pictureOfDayData = picOfDayData
-                }
+                self?.pictureOfDayData = picOfDayData
             case .failure:
                 self?.showAlert = true
             }

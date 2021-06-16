@@ -46,8 +46,10 @@ public class PicureOfTheDayUseCase: NetworkServiceManagerProtocol, PicureOfTheDa
         let key = shortStringValueInYYYYMMDDAsDate(Date()) ?? ""
         if DataCache.instance.hasData(forKey: key) {
             do {
-                let readUser: PictureOfDayModel? = try DataCache.instance.readCodable(forKey: key)
-                completion(.success(readUser))
+                let cachePictureOfDayModel: PictureOfDayModel? = try DataCache.instance.readCodable(forKey: key)
+                DispatchQueue.main.async {
+                    completion(.success(cachePictureOfDayModel))
+                }
             } catch {}
         } else {
             fetch(with: request, decode: { json -> PictureOfDayModel? in
@@ -66,11 +68,11 @@ public class PicureOfTheDayUseCase: NetworkServiceManagerProtocol, PicureOfTheDa
                 case .failure:
                     do {
                         let lastDayKey = shortStringValueInYYYYMMDDAsDayBeforeDate(Date()) ?? ""
-                        guard let readUser: PictureOfDayModel? = try DataCache.instance.readCodable(forKey: lastDayKey) else {
+                        guard let cachePictureOfDayModel: PictureOfDayModel? = try DataCache.instance.readCodable(forKey: lastDayKey) else {
                             completion(.failure(.responseUnsuccessful))
                             return
                         }
-                        completion(.success(readUser))
+                        completion(.success(cachePictureOfDayModel))
                     } catch {
                         completion(.failure(.responseUnsuccessful))
                     }

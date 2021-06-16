@@ -15,7 +15,6 @@
 		50B28BB32678519E001FE1F9 /* NasaAstronomyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28BB22678519E001FE1F9 /* NasaAstronomyTests.swift */; };
 		50B28BBE2678519E001FE1F9 /* NasaAstronomyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28BBD2678519E001FE1F9 /* NasaAstronomyUITests.swift */; };
 		50B28BDC267851DD001FE1F9 /* NetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B28BD3267851DD001FE1F9 /* NetworkService.framework */; };
-		50B28BE3267851DE001FE1F9 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28BE2267851DD001FE1F9 /* NetworkServiceTests.swift */; };
 		50B28BE5267851DE001FE1F9 /* NetworkService.h in Headers */ = {isa = PBXBuildFile; fileRef = 50B28BD5267851DD001FE1F9 /* NetworkService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50B28BE8267851DE001FE1F9 /* NetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50B28BD3267851DD001FE1F9 /* NetworkService.framework */; };
 		50B28BE9267851DE001FE1F9 /* NetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 50B28BD3267851DD001FE1F9 /* NetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -28,6 +27,9 @@
 		50B28C4926788117001FE1F9 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28C4826788117001FE1F9 /* CacheManager.swift */; };
 		50B28C5026788764001FE1F9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28C4F26788764001FE1F9 /* Utils.swift */; };
 		50B28C5926799F90001FE1F9 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28C5826799F90001FE1F9 /* AppConstant.swift */; };
+		50B28C672679BDD2001FE1F9 /* PictureOfDayViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28C662679BDD1001FE1F9 /* PictureOfDayViewModelTest.swift */; };
+		50B28C992679CFB2001FE1F9 /* CacheManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28C982679CFB2001FE1F9 /* CacheManagerTest.swift */; };
+		50B28C9F2679D03F001FE1F9 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B28C9E2679D03F001FE1F9 /* MockService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +102,6 @@
 		50B28BD5267851DD001FE1F9 /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
 		50B28BD6267851DD001FE1F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B28BDB267851DD001FE1F9 /* NetworkServiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkServiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50B28BE2267851DD001FE1F9 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		50B28BE4267851DE001FE1F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B28C0A26785295001FE1F9 /* PictureOfDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayViewModel.swift; sourceTree = "<group>"; };
 		50B28C162678532E001FE1F9 /* NetworkServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
@@ -111,6 +112,9 @@
 		50B28C4826788117001FE1F9 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		50B28C4F26788764001FE1F9 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		50B28C5826799F90001FE1F9 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
+		50B28C662679BDD1001FE1F9 /* PictureOfDayViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOfDayViewModelTest.swift; sourceTree = "<group>"; };
+		50B28C982679CFB2001FE1F9 /* CacheManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManagerTest.swift; sourceTree = "<group>"; };
+		50B28C9E2679D03F001FE1F9 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,8 @@
 			children = (
 				50B28BB22678519E001FE1F9 /* NasaAstronomyTests.swift */,
 				50B28BB42678519E001FE1F9 /* Info.plist */,
+				50B28C662679BDD1001FE1F9 /* PictureOfDayViewModelTest.swift */,
+				50B28C9E2679D03F001FE1F9 /* MockService.swift */,
 			);
 			path = NasaAstronomyTests;
 			sourceTree = "<group>";
@@ -229,7 +235,7 @@
 		50B28BE1267851DD001FE1F9 /* NetworkServiceTests */ = {
 			isa = PBXGroup;
 			children = (
-				50B28BE2267851DD001FE1F9 /* NetworkServiceTests.swift */,
+				50B28C982679CFB2001FE1F9 /* CacheManagerTest.swift */,
 				50B28BE4267851DE001FE1F9 /* Info.plist */,
 			);
 			path = NetworkServiceTests;
@@ -533,6 +539,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B28BB32678519E001FE1F9 /* NasaAstronomyTests.swift in Sources */,
+				50B28C672679BDD2001FE1F9 /* PictureOfDayViewModelTest.swift in Sources */,
+				50B28C9F2679D03F001FE1F9 /* MockService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,7 +569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50B28BE3267851DE001FE1F9 /* NetworkServiceTests.swift in Sources */,
+				50B28C992679CFB2001FE1F9 /* CacheManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

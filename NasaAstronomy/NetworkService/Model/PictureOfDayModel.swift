@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - PictureOfDayModel
-public struct PictureOfDayModel: Codable {
+public struct PictureOfDayModel: Codable, Equatable {
     public let date, explanation: String
     public let hdurl: String
     public let mediaType, serviceVersion, title: String
